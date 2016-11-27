@@ -1477,6 +1477,7 @@ Discarded input sections
  .data          0x00000000        0x0 src\main.o
  .bss           0x00000000        0x0 src\main.o
  .text.initADC  0x00000000       0xa0 src\main.o
+ .text.initLED  0x00000000       0x38 src\main.o
  .text.__assert_func
                 0x00000000       0x10 src\main.o
  .text.__assert
@@ -1868,11 +1869,11 @@ LOAD c:/program files (x86)/atollic/truestudio for arm 6.0.0/armtools/bin/../lib
                 0x00000131       0x1d c:/program files (x86)/atollic/truestudio for arm 6.0.0/armtools/bin/../lib/gcc/arm-atollic-eabi/5.3.1/armv7-m/crtn.o
 OUTPUT(VRS_cv4.elf elf32-littlearm)
 
-.debug_info     0x00000000      0xcdc
- .debug_info    0x00000000      0x5c5 src\main.o
- .debug_info    0x000005c5       0x7c src\startup_stm32l1xx_hd.o
- .debug_info    0x00000641      0x133 src\stm32l1xx_it.o
- .debug_info    0x00000774      0x568 src\system_stm32l1xx.o
+.debug_info     0x00000000      0xd00
+ .debug_info    0x00000000      0x5e9 src\main.o
+ .debug_info    0x000005e9       0x7c src\startup_stm32l1xx_hd.o
+ .debug_info    0x00000665      0x133 src\stm32l1xx_it.o
+ .debug_info    0x00000798      0x568 src\system_stm32l1xx.o
 
 .debug_abbrev   0x00000000      0x34c
  .debug_abbrev  0x00000000      0x18a src\main.o
@@ -1880,34 +1881,34 @@ OUTPUT(VRS_cv4.elf elf32-littlearm)
  .debug_abbrev  0x0000019c       0x67 src\stm32l1xx_it.o
  .debug_abbrev  0x00000203      0x149 src\system_stm32l1xx.o
 
-.debug_aranges  0x00000000       0xf0
+.debug_aranges  0x00000000       0xf8
  .debug_aranges
-                0x00000000       0x38 src\main.o
+                0x00000000       0x40 src\main.o
  .debug_aranges
-                0x00000038       0x28 src\startup_stm32l1xx_hd.o
+                0x00000040       0x28 src\startup_stm32l1xx_hd.o
  .debug_aranges
-                0x00000060       0x60 src\stm32l1xx_it.o
+                0x00000068       0x60 src\stm32l1xx_it.o
  .debug_aranges
-                0x000000c0       0x30 src\system_stm32l1xx.o
+                0x000000c8       0x30 src\system_stm32l1xx.o
 
-.debug_ranges   0x00000000       0xb8
- .debug_ranges  0x00000000       0x28 src\main.o
- .debug_ranges  0x00000028       0x20 src\startup_stm32l1xx_hd.o
- .debug_ranges  0x00000048       0x50 src\stm32l1xx_it.o
- .debug_ranges  0x00000098       0x20 src\system_stm32l1xx.o
+.debug_ranges   0x00000000       0xc0
+ .debug_ranges  0x00000000       0x30 src\main.o
+ .debug_ranges  0x00000030       0x20 src\startup_stm32l1xx_hd.o
+ .debug_ranges  0x00000050       0x50 src\stm32l1xx_it.o
+ .debug_ranges  0x000000a0       0x20 src\system_stm32l1xx.o
 
-.debug_line     0x00000000      0x6bb
- .debug_line    0x00000000      0x23e src\main.o
- .debug_line    0x0000023e       0x7c src\startup_stm32l1xx_hd.o
- .debug_line    0x000002ba      0x1e7 src\stm32l1xx_it.o
- .debug_line    0x000004a1      0x21a src\system_stm32l1xx.o
+.debug_line     0x00000000      0x6d4
+ .debug_line    0x00000000      0x257 src\main.o
+ .debug_line    0x00000257       0x7c src\startup_stm32l1xx_hd.o
+ .debug_line    0x000002d3      0x1e7 src\stm32l1xx_it.o
+ .debug_line    0x000004ba      0x21a src\system_stm32l1xx.o
 
-.debug_str      0x00000000      0x711
- .debug_str     0x00000000      0x4b0 src\main.o
-                                0x510 (size before relaxing)
- .debug_str     0x000004b0       0xa6 src\stm32l1xx_it.o
+.debug_str      0x00000000      0x724
+ .debug_str     0x00000000      0x4c3 src\main.o
+                                0x523 (size before relaxing)
+ .debug_str     0x000004c3       0xa6 src\stm32l1xx_it.o
                                 0x223 (size before relaxing)
- .debug_str     0x00000556      0x1bb src\system_stm32l1xx.o
+ .debug_str     0x00000569      0x1bb src\system_stm32l1xx.o
                                 0x382 (size before relaxing)
 
 .comment        0x00000000       0x7e
@@ -1916,11 +1917,11 @@ OUTPUT(VRS_cv4.elf elf32-littlearm)
  .comment       0x0000007e       0x7f src\stm32l1xx_it.o
  .comment       0x0000007e       0x7f src\system_stm32l1xx.o
 
-.debug_frame    0x00000000      0x248
- .debug_frame   0x00000000       0x90 src\main.o
- .debug_frame   0x00000090      0x110 src\stm32l1xx_it.o
- .debug_frame   0x000001a0       0x7c src\system_stm32l1xx.o
- .debug_frame   0x0000021c       0x2c c:/program files (x86)/atollic/truestudio for arm 6.0.0/armtools/bin/../lib/gcc/arm-atollic-eabi/5.3.1/../../../../arm-atollic-eabi/lib/armv7-m\libc_nano.a(lib_a-init.o)
+.debug_frame    0x00000000      0x26c
+ .debug_frame   0x00000000       0xb4 src\main.o
+ .debug_frame   0x000000b4      0x110 src\stm32l1xx_it.o
+ .debug_frame   0x000001c4       0x7c src\system_stm32l1xx.o
+ .debug_frame   0x00000240       0x2c c:/program files (x86)/atollic/truestudio for arm 6.0.0/armtools/bin/../lib/gcc/arm-atollic-eabi/5.3.1/../../../../arm-atollic-eabi/lib/armv7-m\libc_nano.a(lib_a-init.o)
 
 .stabstr        0x00000000       0x3f
  .stabstr       0x00000000       0x3f c:/program files (x86)/atollic/truestudio for arm 6.0.0/armtools/bin/../lib/gcc/arm-atollic-eabi/5.3.1/../../../../arm-atollic-eabi/lib/armv7-m\libnosys.a(write.o)
@@ -2618,6 +2619,7 @@ fputs                                             src\tiny_printf.o
 fwrite                                            src\tiny_printf.o
 g_pfnVectors                                      src\startup_stm32l1xx_hd.o
 initADC                                           src\main.o
+initLED                                           src\main.o
 iprintf                                           src\tiny_printf.o
 main                                              src\main.o
                                                   src\startup_stm32l1xx_hd.o
