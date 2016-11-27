@@ -161,8 +161,6 @@ int sleep(int val, int ignore) {
 */
 int main(void)
 {
-  int i = 0;
-
   /**
   *  IMPORTANT NOTE!
   *  See the <system_*.c> file and how/if the SystemInit() function updates 
@@ -182,13 +180,33 @@ int main(void)
 
   /* TODO - Add your application code here */
 
+	// inicializuj ADC
+	initADC();
+	// inicializuj LED
+	initLED();
 
-  /* Infinite loop */
-  while (1)
-  {
-	i++;
-  }
-  return 0;
+	// premenna pre sleep = podrzanie rozsvietenej LED
+	uint32_t i = 0;
+
+	// meranie ADC, nameria sa hodnota pri nestlacenom tlacidle (nedrzat tlacidla!)
+	ADC_SoftwareStartConv(ADC1);
+	while(!ADC_GetFlagStatus(ADC1, ADC_FLAG_EOC)){}
+	int no_press = ADC_GetConversionValue(ADC1);
+
+	// prve blikanie bude s periodou rovnou odporu pri nestlacenom tlacidle
+	int hodnota = no_press;
+
+	while (1) {
+
+		GPIO_SetBits(GPIOA,GPIO_Pin_5); // LED on
+		for (i = 0; i < 100000; i++) {}; // podrzanie rozsvietenej LED
+		GPIO_ResetBits(GPIOA,GPIO_Pin_5); // LEd off
+		hodnota = sleep(hodnota, no_press); // sleep
+
+	}
+
+	return 0;
+
 }
 
 #ifdef  USE_FULL_ASSERT
