@@ -103,6 +103,55 @@ void initLED(){
 
 }
 
+int sleep(int val, int ignore) {
+
+	// nastavanie premennych na hodnotu ignore (nestlacene tlacidlo)
+	int min = ignore;
+	int new = ignore;
+	// nova navratova hodnota inicializovana na vstupnu hodnotu
+	int new_val = val;
+
+	// premenne pre sleep (cyklus for)
+	// min = cca 1 000 000, max = cca 12 000 000
+	uint32_t j = val*3000;
+	uint32_t i = 0;
+
+	for (i = 0; i < j; i++) {
+
+		// meranie ADC
+		ADC_SoftwareStartConv(ADC1);
+		while(!ADC_GetFlagStatus(ADC1, ADC_FLAG_EOC)){}
+		min = ADC_GetConversionValue(ADC1);
+
+		// ak namerias menej ako (ignore-100) = nestlacene tlacidlo, tlacidlo
+		// bolo stlacene, nastav nove hodnoty a vyskoc z cyklu
+		if (min < ignore-100) {
+			new = min;
+			new_val = min;
+			break;
+		}
+	}
+
+	// opakuj, kym sa opat nenameria hodnota nestlaceneho tlacidla
+	while (new < ignore-100) {
+
+		// meranie ADC
+		ADC_SoftwareStartConv(ADC1);
+		while(!ADC_GetFlagStatus(ADC1, ADC_FLAG_EOC)){}
+		new = ADC_GetConversionValue(ADC1);
+
+		// ak bolo namerane nove minimum, nastav hodnoty
+		if (new < min) {
+			min = new;
+			new_val = new;
+		}
+	}
+
+	// vrat hodnotu new_val
+	return new_val;
+
+}
+
 /**
 **===========================================================================
 **
